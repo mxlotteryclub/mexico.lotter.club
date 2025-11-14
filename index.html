@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Mexico Lottery Club</title>
+<meta name="description" content="Mexico Lottery Club official lottery results and countdowns. Check past results and upcoming draws.">
+
+<!-- Favicon for all browsers -->
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<!-- PNG versions for modern browsers -->
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+<style>
+  :root {
+    --bg: linear-gradient(120deg, #0f172a, #1e293b, #334155);
+    --card: #1e293b;
+    --accent: #0ea5a0;
+    --accent2: #facc15;
+    --text: #f8fafc;
+    --glow: #22d3ee;
+  }
+
+  body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 980px;
+    margin: 28px auto;
+    padding: 18px;
+    text-align: center;
+  }
+
+  img.logo {
+    max-width: 180px;
+    height: auto;
+    display: block;
+    margin: 0 auto 12px;
+    filter: drop-shadow(0 0 10px var(--glow));
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--accent);
+    text-shadow: 0 0 10px var(--glow);
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+  }
+
+  .card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 0 25px rgba(14, 165, 160, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 35px rgba(14, 165, 160, 0.6);
+  }
+
+  .title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--accent);
+  }
+
+  .date {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    margin-bottom: 16px;
+  }
+
+  .countdown, .numbers {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .time-block, .number-block {
+    background: #0f172a;
+    padding: 14px 18px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(14, 165, 160, 0.4);
+    transition: background 0.3s;
+  }
+
+  .time-block:hover, .number-block:hover {
+    background: #164e63;
+  }
+
+  .time-block span, .number-block span {
+    display: block;
+  }
+
+  .value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--glow);
+  }
+
+  .value2 {
+    color: var(--accent2);
+  }
+
+  .label {
+    font-size: 0.8rem;
+    color: #cbd5e1;
+  }
+
+  video {
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(14, 165, 160, 0.4);
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  button {
+    margin: 6px;
+    padding: 10px 16px;
+    font-size: 15px;
+    border: none;
+    border-radius: 8px;
+    background: var(--accent);
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  button:hover {
+    background: var(--accent2);
+    color: black;
+  }
+
+  @media (max-width: 420px) {
+    h1 { font-size: 1.5rem; }
+    .value { font-size: 1.5rem; }
+    .time-block, .number-block { padding: 10px 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <img src="logo.png" alt="Mexico Lottery Club Logo" class="logo" />
+  <h1>Mexico Lottery Club</h1>
+
+  <main class="cards">
+
+    <!-- 🎥 Latest Draw Video -->
+    <section class="card">
+      <div class="title">Latest Draw Video</div>
+      <video id="lotteryVideo" controls>
+        <source src="myvideo.mp4" type="video/mp4">
+      </video>
+      <br>
+      <button id="resumeBtn" onclick="resumeVideo()">▶️ Resume</button>
+      <button id="pauseBtn" onclick="pauseVideo()">⏸️ Pause</button>
+    </section>
+
+    <!-- ✅ Updated Past Results for 14-11-2025 -->
+    <section class="card">
+      <div class="title">14-11-2025 (Ended)</div>
+      <div class="numbers">
+        <div class="number-block"><span class="value">468312</span><span class="label">1st</span></div>
+      </div>
+      <div class="numbers" style="margin-top: 10px;">
+        <div class="number-block"><span class="value2">245901</span><span class="label">2nd</span></div>
+        <div class="number-block"><span class="value2">723796</span><span class="label">2nd</span></div>
+        <div class="number-block"><span class="value2">810524</span><span class="label">2nd</span></div>
+        <div class="number-block"><span class="value2">125386</span><span class="label">2nd</span></div>
+      </div>
+    </section>
+
+    <!-- Countdown (still active) -->
+    <section class="card">
+      <div class="title">Countdown</div>
+      <div class="date" id="date2">—</div>
+      <div class="countdown">
+        <div class="time-block"><span class="value" id="d2-hours">--</span><span class="label">Hours</span></div>
+        <div class="time-block"><span class="value" id="d2-mins">--</span><span class="label">Minutes</span></div>
+        <div class="time-block"><span class="value" id="d2-secs">--</span><span class="label">Seconds</span></div>
+      </div>
+    </section>
+
+      <!-- Past Results Countdown 1 -->
+    <section class="card">
+      <div class="title">28-10-2025 (Ended)</div>
+      <div class="numbers">
+        <div class="number-block"><span class="value">091564</span><span class="label">1st</span></div>
+        <div class="number-block"><span class="value2">352887</span><span class="label">2nd</span></div>
+        <div class="number-block"><span class="value2">792810</span><span class="label">2nd</span></div>
+        <div class="number-block"><span class="value2">931542</span><span class="label">2nd</span></div>
+        <div class="number-block"><span class="value2">145872</span><span class="label">2nd</span></div>
+      </div>
+    </section>
+
+    <!-- Past Results Countdown 2 -->
+    <section class="card">
+      <div class="title">14-10-2025 (Ended)</div>
+      <div class="numbers">
+        <div class="number-block"><span class="value">942583</span><span class="label">1st</span></div>
+        <div class="number-block"><span class="value2">673142</span><span class="label">2nd</span></div>
+        <div class="number-block"><span class="value2">464091</span><span class="label">2nd</span></div>
+        <div class="number-block"><span class="value2">849517</span><span class="label">2nd</span></div>
+        <div class="number-block"><span class="value2">177639</span><span class="label">2nd</span></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+
+    <!-- Past Results Countdown 3 -->
+    <section class="card">
+      <div class="title">28-09-2025 (Ended)</div>
+      <div class="numbers">
+        <div class="number-block"><span class="value">771235</span><span class="label">1st</span></div>
+        <div class="number-block"><span class="value2">314659</span><span class="label">2nd</span></div>
+        <div class="number-block"><span class="value2">879231</span><span class="label">2nd</span></div>
+        <div class="number-block"><span class="value2">145193</span><span class="label">2nd</span></div>
+        <div class="number-block"><span class="value2">629681</span><span class="label">2nd</span></div>
+      </div>
+    </section>
+
+    <!-- Past Results Countdown 4 -->
+    <section class="card">
+      <div class="title">14-09-2025 (Ended)</div>
+      <div class="numbers">
+        <div class="number-block"><span class="value">596731</span><span class="label">1st</span></div>
+        <div class="number-block"><span class="value2">357092</span><span class="label">2nd</span></div>
+        <div class="number-block"><span class="value2">405536</span><span class="label">2nd</span></div>
+        <div class="number-block"><span class="value2">624321</span><span class="label">2nd</span></div>
+        <div class="number-block"><span class="value2">817693</span><span class="label">2nd</span></div>
+      </div>
+    </section>
+
+
+<script>
+const countdownConfigs = [
+  {
+    idPrefix: 'd2',
+    displayDateEl: 'date2',
+    start: '2025-11-28T08:00:00+05:00',
+    drawDate: '2025-11-28 10:00:00',
+    durationHours: 2
+  }
+];
+
+function pad(n) { return String(n).padStart(2, '0'); }
+
+function startCountdown(cfg) {
+  const displayDate = document.getElementById(cfg.displayDateEl);
+  const prefix = cfg.idPrefix;
+
+  let startTime = cfg.start instanceof Date ? cfg.start.getTime() : new Date(cfg.start).getTime();
+  let endTime = cfg.durationHours ? startTime + cfg.durationHours*3600*1000 : new Date(cfg.drawDate.replace(' ', 'T') + '+05:00').getTime();
+
+  const ids = {
+    hours: document.getElementById(prefix + '-hours'),
+    mins: document.getElementById(prefix + '-mins'),
+    secs: document.getElementById(prefix + '-secs')
+  };
+
+  function update() {
+    const now = Date.now();
+
+    if (now < startTime) {
+      displayDate.textContent = `Date & Time: ${cfg.drawDate} (Starts Soon)`;
+      ids.hours.textContent = '--';
+      ids.mins.textContent = '--';
+      ids.secs.textContent = '--';
+      return;
+    }
+
+    if (now >= startTime && now < endTime) {
+      displayDate.textContent = `Date & Time: ${cfg.drawDate} (In Progress)`;
+      let diff = endTime - now;
+      const sec = 1000, min = 60*sec, hour = 60*min;
+      const hours = Math.floor(diff/hour);
+      diff -= hours*hour;
+      const minutes = Math.floor(diff/min);
+      diff -= minutes*min;
+      const seconds = Math.floor(diff/sec);
+
+      ids.hours.textContent = pad(hours);
+      ids.mins.textContent = pad(minutes);
+      ids.secs.textContent = pad(seconds);
+      return;
+    }
+
+    if (now >= endTime) {
+      displayDate.textContent = `Date & Time: ${cfg.drawDate} (Draw Ended)`;
+      ids.hours.textContent = '00';
+      ids.mins.textContent = '00';
+      ids.secs.textContent = '00';
+      clearInterval(interval);
+    }
+  }
+
+  update();
+  const interval = setInterval(update, 1000);
+}
+
+countdownConfigs.forEach(startCountdown);
+
+function resumeVideo() {
+  const video = document.getElementById("lotteryVideo");
+  video.play();
+}
+function pauseVideo() {
+  const video = document.getElementById("lotteryVideo");
+  video.pause();
+}
+</script>
+</body>
+</html>
+
+
